@@ -20,9 +20,9 @@ class HealthCheckMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if request.path in HEALTH_LIVENESS_PATHS:
+        if request.path_info in HEALTH_LIVENESS_PATHS:
             return self._serve(request, self._liveness)
-        if request.path in HEALTH_READINESS_PATHS:
+        if request.path_info in HEALTH_READINESS_PATHS:
             return self._serve(request, self._readiness)
         return self.get_response(request)
 

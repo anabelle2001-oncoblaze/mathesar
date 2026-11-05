@@ -24,6 +24,12 @@ def test_liveness_returns_ok(rf):
         assert json.loads(response.content) == {"status": "ok"}
 
 
+@override_settings(FORCE_SCRIPT_NAME='/mathesar')
+def test_liveness_returns_ok_under_base_path(rf):
+    response = _middleware()(rf.get('/healthz/live/'))
+    assert response.status_code == 200
+
+
 def test_liveness_does_not_touch_the_database(rf):
     # Liveness must never hit the DB; a DB failure must not affect it.
     with patch('mathesar.middleware.connection') as mock_connection:

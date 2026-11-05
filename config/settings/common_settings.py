@@ -223,6 +223,13 @@ DEBUG = os.environ.get('DEBUG') in ['t', 'true', 'True']
 
 ALLOWED_HOSTS = [i.strip() for i in os.environ.get('ALLOWED_HOSTS', default=".localhost, 127.0.0.1, [::1]").split(',')]
 
+# Path prefix to serve Mathesar under, e.g. '/mathesar' when Mathesar is
+# accessed at https://example.com/mathesar/. Leave unset to serve Mathesar from
+# the root of the domain.
+MATHESAR_BASE_PATH = os.environ.get('MATHESAR_BASE_PATH', default='').strip().strip('/')
+MATHESAR_BASE_PATH = f'/{MATHESAR_BASE_PATH}' if MATHESAR_BASE_PATH else ''
+FORCE_SCRIPT_NAME = MATHESAR_BASE_PATH or None
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -258,7 +265,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 # https://docs.djangoproject.com/en/3.1/ref/contrib/staticfiles/
 
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
 
 # When running with DEBUG=False, the webserver needs to serve files from this location
 # python manage.py collectstatic has to be run to collect all static files into this location
@@ -269,7 +276,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 DEFAULT_MEDIA_ROOT = os.path.join(BASE_DIR, '.media/')
 MEDIA_ROOT = os.environ.get('MEDIA_ROOT', default=DEFAULT_MEDIA_ROOT)
 
-MEDIA_URL = "/media/"
+MEDIA_URL = "media/"
 
 
 # Mathesar settings
@@ -332,9 +339,9 @@ MATHESAR_LANDING_PAGE_URL = os.environ.get('MATHESAR_LANDING_PAGE_URL') or None
 
 # Accounts
 AUTH_USER_MODEL = 'mathesar.User'
-LOGIN_URL = '/auth/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 # List of Template names that contains additional script tags to be added to the base template
 BASE_TEMPLATE_ADDITIONAL_SCRIPT_TEMPLATES = []

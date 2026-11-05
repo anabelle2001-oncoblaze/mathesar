@@ -52,7 +52,7 @@
     <div class="auth-main-layout">
       <div class="auth-login-stack">
         <header class="auth-page-header">
-          <a class="auth-logo" href="/" aria-label="{{ mathesar_instance_name }} home">
+          <a class="auth-logo" href="{% url 'home' %}" aria-label="{{ mathesar_instance_name }} home">
             {% if mathesar_auth_logo_url %}
               <img src="{{ mathesar_auth_logo_url }}" alt="{{ mathesar_instance_name }} Logo" title="{{ mathesar_instance_name }}"/>
             {% else %}

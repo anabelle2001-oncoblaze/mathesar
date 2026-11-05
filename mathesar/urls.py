@@ -7,7 +7,7 @@ from mathesar.views.users.login import MathesarLoginView
 from mathesar.views.users.password_reset import MathesarPasswordResetConfirmView
 
 urlpatterns = [
-    path('api/rpc/v0/', views.MathesarRPCEntryPoint.as_view()),
+    path('api/rpc/v0/', views.MathesarRPCEntryPoint.as_view(), name='rpc'),
     path('api/db/v0/data_files/', views.data_files.list_or_create_data_file, name='list_or_create_data_file'),
     path('api/db/v0/data_files/<int:data_file_id>/', views.data_files.get_or_patch_data_file, name='get_or_patch_data_file'),
     path('api/export/v0/explorations/', views.export.export_exploration, name='export_exploration'),
