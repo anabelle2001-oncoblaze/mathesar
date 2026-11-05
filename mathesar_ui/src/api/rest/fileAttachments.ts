@@ -1,3 +1,4 @@
+import { BASE_PATH } from '@mathesar/routes/urls';
 import type { CancellablePromise } from '@mathesar-component-library';
 
 import type { FileManifest } from '../rpc/records';
@@ -8,7 +9,7 @@ import {
   uploadFile,
 } from './utils/requestUtils';
 
-const ENDPOINT = '/files/';
+const ENDPOINT = `${BASE_PATH}/files/`;
 
 export interface FileAttachmentUploadResult {
   /** The value to set in the cell into which the file was uploaded */

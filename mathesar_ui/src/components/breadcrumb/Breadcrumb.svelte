@@ -1,5 +1,6 @@
 <script lang="ts">
   import LogoAndNameWithLink from '@mathesar/components/LogoAndNameWithLink.svelte';
+  import { HOME_URL } from '@mathesar/routes/urls';
 
   import BreadcrumbItemUi from './BreadcrumbItem.svelte';
   import type { BreadcrumbItem } from './breadcrumbTypes';
@@ -10,7 +11,7 @@
 </script>
 
 <div class="breadcrumb">
-  <LogoAndNameWithLink href="/" {compactLayout} />
+  <LogoAndNameWithLink href={HOME_URL} {compactLayout} />
   <DatabaseSelector />
   {#each items as item}
     <BreadcrumbItemUi {item} />

@@ -137,6 +137,7 @@ def get_anonymous_common_data(request):
 def get_base_common_data(request):
     return {
         'current_release_tag_name': __version__,
+        'base_path': settings.MATHESAR_BASE_PATH,
         'is_authenticated': not request.user.is_anonymous,
         'is_sso_login_required': settings.REQUIRE_SSO_LOGIN,
         'per_user_databases_enabled': settings.PER_USER_DATABASES_ENABLED,

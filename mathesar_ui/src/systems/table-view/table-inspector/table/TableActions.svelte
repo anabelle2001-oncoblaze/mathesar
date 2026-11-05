@@ -9,7 +9,7 @@
     iconExport,
     iconImportData,
   } from '@mathesar/icons';
-  import { getSchemaPageUrl } from '@mathesar/routes/urls';
+  import { BASE_PATH, getSchemaPageUrl } from '@mathesar/routes/urls';
   import { confirmDelete } from '@mathesar/stores/confirmation';
   import { getTabularDataStoreFromContext } from '@mathesar/stores/table-data';
   import { deleteTable } from '@mathesar/stores/tables';
@@ -122,7 +122,7 @@
 
   {#if $canSelectRecords}
     <AnchorButton
-      href="/api/export/v0/tables/?{exportLinkParams}"
+      href="{BASE_PATH}/api/export/v0/tables/?{exportLinkParams}"
       appearance="action"
       data-tinro-ignore
       aria-label={$_('export')}

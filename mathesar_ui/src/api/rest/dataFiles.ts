@@ -1,3 +1,4 @@
+import { BASE_PATH } from '@mathesar/routes/urls';
 import type { CancellablePromise } from '@mathesar-component-library';
 
 import type { DataFile } from './types/dataFiles';
@@ -9,7 +10,7 @@ import {
   uploadFile,
 } from './utils/requestUtils';
 
-const ENDPOINT = '/api/db/v0/data_files/';
+const ENDPOINT = `${BASE_PATH}/api/db/v0/data_files/`;
 
 interface PostParams {
   paste: string;

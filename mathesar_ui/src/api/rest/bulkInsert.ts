@@ -1,10 +1,11 @@
 import type { Database } from '@mathesar/models/Database';
 import type { Table } from '@mathesar/models/Table';
+import { BASE_PATH } from '@mathesar/routes/urls';
 import type { CancellablePromise } from '@mathesar-component-library';
 
 import { uploadFile } from './utils/requestUtils';
 
-const ENDPOINT = '/bulk_insert/';
+const ENDPOINT = `${BASE_PATH}/bulk_insert/`;
 
 export interface ImportColumnMappingEntry {
   csv_column: {

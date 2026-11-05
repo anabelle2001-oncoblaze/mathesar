@@ -21,6 +21,7 @@ type WithStatus<D> =
 
 export interface BaseCommonData {
   current_release_tag_name: string;
+  base_path: string;
   supported_languages: Record<string, string>;
   is_authenticated: boolean;
   is_sso_login_required: boolean;
@@ -76,6 +77,14 @@ export function preloadCommonData(): CommonData {
     throw new Error('commonData is undefined. This state should never occur');
   }
   return commonData;
+}
+
+/**
+ * The path prefix that Mathesar is served under, e.g. `/mathesar`. This is an
+ * empty string when Mathesar is served from the root of the domain.
+ */
+export function getBasePath(): string {
+  return getData<CommonData>('#common-data')?.base_path ?? '';
 }
 
 export function canViewDbPermissionsAndSettings(): boolean {

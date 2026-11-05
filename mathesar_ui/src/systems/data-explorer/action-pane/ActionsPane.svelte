@@ -10,6 +10,7 @@
   import TableName from '@mathesar/components/TableName.svelte';
   import { iconExploration, iconExport } from '@mathesar/icons';
   import type { Table } from '@mathesar/models/Table';
+  import { BASE_PATH } from '@mathesar/routes/urls';
   import { modal } from '@mathesar/stores/modal';
   import { queries } from '@mathesar/stores/queries';
   import { currentTablesData as tablesDataStore } from '@mathesar/stores/tables';
@@ -148,7 +149,7 @@
           <Tooltip allowHover>
             <AnchorButton
               slot="trigger"
-              href="/api/export/v0/explorations/?{exportLinkParams}"
+              href="{BASE_PATH}/api/export/v0/explorations/?{exportLinkParams}"
               data-tinro-ignore
               appearance="secondary"
               size="medium"

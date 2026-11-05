@@ -8,15 +8,16 @@
 
   import AnonymousAccessRoutes from './AnonymousAccessRoutes.svelte';
   import AuthenticatedRoutes from './AuthenticatedRoutes.svelte';
+  import { BASE_PATH, HOME_URL } from './urls';
 
   export let commonData: CommonData;
 
   function gotoLoginPage() {
-    window.location.href = '/auth/login/?next=/';
+    window.location.href = `${BASE_PATH}/auth/login/?next=${HOME_URL}`;
   }
 </script>
 
-<Route path="/*" firstmatch>
+<Route path="{BASE_PATH}/*" firstmatch>
   {#if commonData.is_authenticated}
     <AuthenticatedRoutes />
   {:else}

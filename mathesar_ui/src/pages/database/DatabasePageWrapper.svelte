@@ -18,6 +18,7 @@
   import type { Database } from '@mathesar/models/Database';
   import { makeSimplePageTitle } from '@mathesar/pages/pageTitleUtils';
   import {
+    HOME_URL,
     getDatabasePageSchemasSectionUrl,
     getDatabasePageSettingsSectionUrl,
   } from '@mathesar/routes/urls';
@@ -217,7 +218,7 @@
     } else {
       toast.success($_('database_disconnected_without_sql_cleanup'));
     }
-    router.goto('/');
+    router.goto(HOME_URL);
     return result;
   }}
 />

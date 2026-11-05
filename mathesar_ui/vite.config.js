@@ -51,7 +51,9 @@ export default defineConfig({
     outDir: '../mathesar/static/mathesar/',
     emptyOutDir: true,
   },
-  base: '/static/',
+  // A relative base allows the built assets to load each other regardless of
+  // the URL they are served from, which lets Mathesar run under a subpath.
+  base: './',
   test: {
     environment: 'jsdom',
     globals: true,

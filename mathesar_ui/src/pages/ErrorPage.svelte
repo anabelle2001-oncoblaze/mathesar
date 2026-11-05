@@ -2,6 +2,7 @@
   import { _ } from 'svelte-i18n';
 
   import LayoutWithHeader from '@mathesar/layouts/LayoutWithHeader.svelte';
+  import { HOME_URL } from '@mathesar/routes/urls';
   import { AnchorButton } from '@mathesar-component-library';
 
   export let showGoToRoot = true;
@@ -14,7 +15,7 @@
       <slot />
     </div>
     {#if showGoToRoot}
-      <AnchorButton appearance="primary" href="/">
+      <AnchorButton appearance="primary" href={HOME_URL}>
         {$_('go_to_homepage')}
       </AnchorButton>
     {/if}

@@ -1,16 +1,20 @@
 import type { Table } from '@mathesar/models/Table';
+import { getBasePath } from '@mathesar/utils/preloadData';
 import Url64 from '@mathesar/utils/Url64';
 
+export const BASE_PATH = getBasePath();
+export const HOME_URL = `${BASE_PATH}/`;
+
 export function getDatabasePageUrl(databaseId: number): string {
-  return `/db/${databaseId}/`;
+  return `${BASE_PATH}/db/${databaseId}/`;
 }
 
 export function getDatabasePageSchemasSectionUrl(databaseId: number): string {
-  return `/db/${databaseId}/schemas/`;
+  return `${BASE_PATH}/db/${databaseId}/schemas/`;
 }
 
 export function getDatabasePageSettingsSectionUrl(databaseId: number): string {
-  return `/db/${databaseId}/settings/`;
+  return `${BASE_PATH}/db/${databaseId}/settings/`;
 }
 
 export function getDatabaseRoleConfigurationUrl(databaseId: number): string {
@@ -149,16 +153,16 @@ export function getDataFormPageUrl(
 }
 
 export function getFormShareUrl(formToken: string) {
-  return `/shares/forms/${formToken}/`;
+  return `${BASE_PATH}/shares/forms/${formToken}/`;
 }
 
-export const USER_PROFILE_URL = '/profile/';
-export const ADMIN_URL = '/administration/';
+export const USER_PROFILE_URL = `${BASE_PATH}/profile/`;
+export const ADMIN_URL = `${BASE_PATH}/administration/`;
 export const ADMIN_UPDATE_PAGE_URL = `${ADMIN_URL}update/`;
 export const ADMIN_USERS_PAGE_URL = `${ADMIN_URL}users/`;
 export const ADMIN_USERS_PAGE_ADD_NEW_URL = `${ADMIN_URL}users/new/`;
 export const ADMIN_SETTINGS_PAGE_URL = `${ADMIN_URL}settings/`;
-export const LOGOUT_URL = '/auth/logout/';
+export const LOGOUT_URL = `${BASE_PATH}/auth/logout/`;
 
 export function getEditUsersPageUrl(userId: number) {
   return `${ADMIN_USERS_PAGE_URL}${userId}/`;
