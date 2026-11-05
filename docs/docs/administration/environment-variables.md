@@ -30,6 +30,28 @@ This page contains all available environment variables supported by Mathesar. Se
 - **Default value**: `false`
 - **Additional information**: If you enable this after installing Mathesar directly on Linux, macOS, or WSL, start Mathesar once with `mathesar run --setup-django` so Django can apply any required admin migrations and collect admin static files.
 
+### `MATHESAR_BASE_PATH` (optional) {: #mathesar_base_path}
+
+- **Description**: A path prefix to serve Mathesar under, for when Mathesar shares a domain with other services behind a reverse proxy. For example, set this to `/mathesar` to access Mathesar at `https://example.com/mathesar/`.
+- **Format**: A path starting with `/`, without a trailing slash
+
+    !!! example "Example values"
+        - `/mathesar`
+        - `/tools/mathesar`
+
+- **Default value**: (none — Mathesar is served from the root of the domain)
+- **Additional information**: Your reverse proxy may either forward the full request path to Mathesar or remove the prefix first; Mathesar handles both. For example, with nginx:
+
+    ```nginx
+    location /mathesar/ {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    ```
+
+    If you serve Mathesar's static files from your reverse proxy instead of from Mathesar itself, serve them under the prefix too, e.g. at `/mathesar/static/`. The Caddy configuration in our [default Docker Compose](install-via-docker-compose.md#steps) file does this automatically.
+
 
 ## Internal database configuration {: #db}
 
