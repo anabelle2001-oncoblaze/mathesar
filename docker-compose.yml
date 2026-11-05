@@ -35,6 +35,10 @@ x-config: &config
   # access Mathesar over http or https
   DOMAIN_NAME: ${DOMAIN_NAME:-http://localhost}
 
+  # (Optional) Set to a path such as '/mathesar' to serve Mathesar under that
+  # path on your domain(s), e.g. https://yourdomain.com/mathesar/
+  MATHESAR_BASE_PATH: ${MATHESAR_BASE_PATH:-}
+
   # Edit the POSTGRES_* variables if you are not using the db service provided
   # below, or if you want to use a custom database user.
 

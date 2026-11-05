@@ -4,7 +4,7 @@
 	}
 	respond /caddy-health-check 200
 	encode zstd gzip
-	handle_path /media/* {
+	handle_path {$MATHESAR_BASE_PATH}/media/* {
 		@downloads {
 			query dl=*
 		}
@@ -15,7 +15,7 @@
 			root {$MEDIA_ROOT:/code/.media/}
 		}
 	}
-	handle_path /static/* {
+	handle_path {$MATHESAR_BASE_PATH}/static/* {
 		file_server {
 			precompressed br zstd gzip
 			root {$STATIC_ROOT:/code/static/}
